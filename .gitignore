@@ -1,0 +1,13 @@
+# 编译产物（不提交）
+*.exe
+*.obj
+*.o
+*.out
+output/
+
+# VS Code 个人配置
+.vscode/
+
+# 系统文件
+Thumbs.db
+.DS_Store
