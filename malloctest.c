@@ -24,7 +24,7 @@ int main(void)
     printf("arr[5]=%d\n", arr[5]);
 
     /* 3. 用完了，退租 */
-    // free(p);
+    free(p);
     free(arr);
     return 0;
 }
