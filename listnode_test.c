@@ -15,13 +15,14 @@ struct Node* list_create(void) {           /* 造头结点（哨兵） */
     return head;
 }
 
+
 void list_insert_head(struct Node* head, int val) {   /* 插到头结点后面 */
     struct Node* n = (struct Node*)malloc(sizeof(struct Node));
     if (n == NULL) { printf("malloc failed\n"); return; }
     n->data = val;
     n->prev = head;                /* 1. 新节点先连好自己两条链 */
     n->next = head->next;
-    if (head->next != NULL)        /* 2. 原第一个节点回指（非空才回指） */
+    if (head->next != NULL)  /* 2. 原第一个节点回指（非空才回指） */
         head->next->prev = n;
     head->next = n;                /* 3. 最后才改头结点的链 */
 }
