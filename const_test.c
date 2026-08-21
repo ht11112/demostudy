@@ -14,12 +14,12 @@ int main(void) {
     int a = 10, b = 20;
 
     const int score = 100;
-    /* score = 99;        // ERROR: assignment of read-only variable */
+    // score = 99;        // ERROR: assignment of read-only variable */
 
     const int *p1 = &a;   /* value read-only, pointer movable */
     p1 = &b;              /* OK */
     printf("*p1=%d\n", *p1);
-    /* *p1 = 99;         // ERROR: assignment of read-only location */
+    //  *p1 = 99;         // ERROR: assignment of read-only location */
 
     int *const p2 = &a;   /* pointer read-only, value mutable */
     *p2 = 99;             /* OK */
