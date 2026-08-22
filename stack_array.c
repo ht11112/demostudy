@@ -59,7 +59,7 @@ int main(void) {
     int val;
     top(&s, &val);
     printf("top = %d\n", val);                 // expect 30
-
+   
     while (!is_empty(&s)) {
         pop(&s, &val);
         printf("pop = %d\n", val);             // expect 30 20 10
