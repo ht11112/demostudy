@@ -35,7 +35,7 @@ bool dequeue(Queue *q, int *out) {
 int front(const Queue *q) { return q->data[q->front]; }
 
 int main(void) {
-    Queue q;
+    Queue q;          
     init(&q);
     printf("empty=%d\n", is_empty(&q));
 
