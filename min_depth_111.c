@@ -15,11 +15,12 @@ struct Node *new_node(int v) {
     return n;
 }
 int minDepth(struct Node* root) {
-    if (root == NULL) return 0;                                    // empty -> 0
-    if (root->left == NULL) return minDepth(root->right) + 1;      // left empty -> go right
-    if (root->right == NULL) return minDepth(root->left) + 1;      // right empty -> go left
+    if (root == NULL) return 0; 
     int l = minDepth(root->left);
-    int r = minDepth(root->right);
+    int r = minDepth(root->right);                                   // empty -> 0
+    if (root->left == NULL) return r + 1;      // left empty -> go right
+    if (root->right == NULL) return l + 1;      // right empty -> go left
+    
     return (l < r ? l : r) + 1;                                    // both sides -> smaller+1
 }
 
