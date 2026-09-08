@@ -1,5 +1,6 @@
 /* blind_level_order.c - Level-order traversal (BFS), BLIND TEST
- * Completed & verified 2026-08-31. Expected output: 1 2 3 4 5
+ * Fill in the TODO parts below from memory.
+ * Do NOT open level_order.c until you finish writing.
  */
 
 #include <stdio.h>
@@ -36,9 +37,30 @@ struct Node *deq(void) {
     size--;
     return n;
 }
-int q_empty(void) {
-    return size == 0;
+int q_empty(void){
+    return size ==0;
 }
+
+
+/* TODO: declare 4 globals below:
+ *   struct Node *q[MAX];   (queue storage)dak
+ *   int front = 0, rear = 0, size = 0;
+ */
+
+/* TODO: void enq(struct Node *n)
+ *   - store n at q[rear]
+ *   - rear = (rear + 1) % MAX
+ *   - size++;
+ */
+
+/* TODO: struct Node *deq(void)
+ *   - take n = q[front]
+ *   - front = (front + 1) % MAX
+ *   - size--;
+ *   - return n;
+ */
+
+/* TODO: int q_empty(void)  -> return 1 if empty, 0 otherwise */
 
 /* ===== FILL IN 2: level_order - four-step rhythm =====
  * 1) if root == NULL, just return
