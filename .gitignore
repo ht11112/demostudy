@@ -5,6 +5,9 @@
 *.out
 output/
 
+# 程序运行时生成的数据文件（不提交）
+student_mgr/students.txt
+
 # VS Code 个人配置
 .vscode/
 
