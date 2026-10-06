@@ -1,19 +1,29 @@
 /*
- * main.c —— 学生成绩管理系统 v0.4（中文姓名 + 空格姓名 输入健壮版）
+ * main.c —— 学生成绩管理系统 v0.5（链表 + 文件存储 + 排序 + 按姓名查找 + 统计）
  *
- * v0.4 相比 v0.3 只改"输入这一层"，不动链表、不动文件存储：
- *   v0.3: scanf("%31s")  —— 遇空格就断！输入 "张 三" 只会读进 "张"
- *   v0.4: fgets + 手动去末尾换行 —— 能读进带空格的整行，也能读中文
+ * 版本演进（看注释就能复习每一步解决了什么问题）：
+ *   v0.2  定长数组 Student list[100] —— 一开始就占掉 100 份空间，满了塞不进
+ *   v0.3  换成链表（用多少申请多少）+ 文件存储
+ *   v0.4  scanf("%31s") 遇空格就断（输入 "张 三" 只读进 "张"）→ 改用 fgets 读整行
+ *   v0.5  新增 list_find_by_name（按姓名查找）+ list_stats（平均 / 最高 / 最低）
  *
  * 三个必须掌握的知识点（本文件里都有注释标注）：
  *   知识点 1：fgets 会把末尾的 '\n' 也读进来，必须自己删掉
  *   知识点 2：删 '\n' 时不能用 sizeof(arr) 代替真实长度
  *   知识点 3：scanf 之后缓冲区里会残留 '\n'，必须"清缓冲"再 fgets
  *
- * 编译（Windows + GCC，在 VS Code 集成终端里执行）：
- *   gcc -Wall -Wextra -O2 main.c student.c -o student_mgr.exe
+ * ★★ 多文件项目：编译时必须把 main.c 和 student.c 一起交给 gcc！★★
+ *   只编译 main.c，会在"链接"阶段报一串 undefined reference to `list_create' 之类的错，
+ *   因为所有 list_xxx 函数的实现都写在 student.c 里。
+ *   编译（把 .c 变成 .o）→ 链接（把 .o 拼成 .exe），两步缺一不可。
+ *
+ * 编译（Windows + GCC）：
+ *   gcc -Wall -Wextra -O2 main.c student.c -o student_mgr.exe     <- 日常 / 验收用
+ *   gcc -Wall -Wextra -g    main.c student.c -o student_mgr.exe   <- VS Code 调试用（-g 带调试信息）
  * 运行：
  *   ./student_mgr.exe
+ *
+ * 在 VS Code 里直接按 ▶️ 或 F5 也行：本目录的 .vscode/ 已配好"一次编译两个 .c"。
  */
 
 #include <stdio.h>

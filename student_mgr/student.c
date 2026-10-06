@@ -1,8 +1,12 @@
 /*
- * student.c —— 学生成绩管理系统 v0.3 的实现（链表版）
+ * student.c —— 学生成绩管理系统 v0.5 的实现（链表 + 文件存储 + 排序 + 姓名查找 + 统计）
  *
- * 编译方式（三个文件一起编译链接成 1 个 exe）：
- *   gcc -Wall -Wextra -O2 student.c main.c -o sm.exe
+ * 编译方式（两个 .c 一起编译链接成 1 个 exe）：
+ *   gcc -Wall -Wextra -O2 main.c student.c -o student_mgr.exe
+ *
+ *   ★ 必须把 main.c 和 student.c 一起写进命令里。
+ *     只编译 main.c 的话，会在"链接"阶段报一长串
+ *     undefined reference to `list_create' —— 因为函数实现都在这一个文件里。
  *
  * 和 v0.2 的对照表：
  *   v0.2 数组版                 v0.3 链表版
