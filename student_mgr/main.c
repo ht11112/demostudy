@@ -118,7 +118,7 @@ static void clear_input_buffer(void)
 static void print_menu(void)
 {
     printf("\n");
-    printf("========== Student Manager v0.5 ==========\n");
+    printf("========== Student Manager v0.6 ==========\n");
     printf("  1. add student\n");
     printf("  2. list all\n");
     printf("  3. find by id\n");
@@ -128,6 +128,8 @@ static void print_menu(void)
     printf("  7. load from file\n");
     printf("  8. find by name          <-- new in v0.5\n");
     printf("  9. show statistics       <-- new in v0.5\n");
+    printf("10. filter by score range  <-- new in v0.6\n");
+    printf("11. delete by name        <-- new in v0.6\n");
     printf("  0. quit\n");
     printf("==========================================\n");
     printf("choice: ");
@@ -309,6 +311,32 @@ int main(void)
                        n, avg, max_score, min_score);
             } else {
                 printf("[INFO] no student yet\n");
+            }
+        } else if (choice == 10) {
+            int low = 0;
+            int high = 0;
+
+            printf("low  score: ");
+            if (scanf("%d", &low) != 1) { clear_input_buffer(); printf("[ERROR] invalid\n"); continue; }
+            printf("high score: ");
+            if (scanf("%d", &high) != 1) { clear_input_buffer(); printf("[ERROR] invalid\n"); continue; }
+            clear_input_buffer();
+
+            int hits = list_filter_by_score(head, low, high);
+            printf("[FILTER] %d student(s) in [%d, %d]\n", hits, low, high);
+
+        } else if (choice == 11) {
+            char name_buffer[MAX_NAME_LEN];
+
+            printf("name to delete: ");
+            if (read_line_capped(name_buffer, MAX_NAME_LEN) == 0) {
+                printf("[ERROR] name cannot be empty\n"); continue;
+            }
+
+            if (list_delete_by_name(&head, name_buffer) == 1) {
+                printf("[OK] deleted: %s\n", name_buffer);
+            } else {
+                printf("[NOT FOUND] name=%s\n", name_buffer);
             }
 
         } else if (choice == 0) {

@@ -89,4 +89,24 @@ StudentNode *list_find_by_name(StudentNode *head, const char *name);
  * 返回参与统计的人数：为 0 时三个输出参数都会被置 0，避免除零。 */
 int list_stats(StudentNode *head, double *avg_out, int *max_out, int *min_out);
 
+/* ============================================================
+ * v0.6 新增接口（两项增量）
+ * ============================================================ */
+
+/* 【增量 1】按成绩区间筛选：打印 score 落在 [low, high] 闭区间内的学生，
+ * 返回命中的人数。
+ * 只读操作，不修改链表本身，所以传一级指针 head 就够了。 */
+int list_filter_by_score(StudentNode *head, int low, int high);
+
+/* 【增量 2】按姓名删除第一个匹配的学生，成功返回 1，没找到返回 0。
+ *
+ * 为什么这里用 StudentNode **phead（二级指针）而不是 StudentNode *head？
+ *   list_delete（按学号删）用的就是二级指针，理由有两条：
+ *   ① 删除会改变链表的连接关系，接口上明确"我可能要动 head"；
+ *   ② 整个项目保持同一套删除接口风格，调用处写成 list_delete_by_name(&head, name)，
+ *      跟 list_delete(&head, id) 长得一样，不用记两套。
+ *   （本项目因为有头结点做哨兵，head 本身其实不会被删掉 ——
+ *     这也是"带头结点"这个设计带来的好处，删逻辑能少一个分支。） */
+int list_delete_by_name(StudentNode **phead, const char *name);
+
 #endif /* STUDENT_H */

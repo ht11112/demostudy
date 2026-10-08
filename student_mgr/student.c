@@ -452,3 +452,78 @@ int list_save(StudentNode *head, const char *filename)
 
     return n;
 }
+
+/* ------------------------------------------------------------
+ * v0.6 增量 1：按成绩区间筛选
+ *
+ * 要求：遍历整条链表，把 score 落在闭区间 [low, high] 内的学生
+ *       打印出来（格式跟 list_print 一致），返回命中的人数。
+ *
+ * ★ 这个函数由你来写 ★
+ *
+ * 骨架提示（跟 list_print 是同一个遍历，只改了一处）：
+ *   int n = 0;
+ *   for (StudentNode *cur = head->next; cur != NULL; cur = cur->next) {
+ *       if ( 成绩在区间内 ) {      <-- 这一行是唯一的新东西
+ *           打印 cur 的 id / name / score;
+ *           n++;
+ *       }
+ *   }
+ *   return n;
+ *
+ * 两个要想清楚的点：
+ *   ① 区间是闭区间，所以判断写成  low <= cur->score && cur->score <= high
+ *      （别写成 low <= x < high，C 语言不支持这种连写）
+ *   ② 循环开始前要先判断 head == NULL，否则 head->next 会崩
+ * ------------------------------------------------------------ */
+int list_filter_by_score(StudentNode *head, int low, int high)
+{
+    if (head == NULL) {
+        return 0;
+    }
+    int hit_count = 0;
+    for (StudentNode *cur = head->next; cur != NULL; cur = cur->next) {
+        if (low <= cur->score && cur->score <= high) {
+            printf("id=%d, name=%s, score=%d\n", cur->id, cur->name, cur->score);
+            hit_count++;
+        }
+    }
+    return hit_count;
+}
+
+/* ------------------------------------------------------------
+ * v0.6 增量 2：按姓名删除
+ *
+ * 请把它和上面的 list_delete（按学号删除）对着看 ——
+ * 两个函数是同一个骨架，只有"比较方式"这一处不同：
+ *     list_delete          prev->next->id   != id
+ *     list_delete_by_name  strcmp(prev->next->name, name) != 0
+ * 这跟 list_find / list_find_by_name 的对照关系一模一样。
+ *
+ * 为什么可以不判"删的是不是头结点"？
+ *   因为本项目带头结点（哨兵）：head 自己不存数据，永远删不掉，
+ *   所以 prev 从 *phead 出发，一路走到"下一个就是要删的那个"即可。
+ * ------------------------------------------------------------ */
+int list_delete_by_name(StudentNode **phead, const char *name)
+{
+    if (phead == NULL || *phead == NULL || name == NULL) {
+        return 0;
+    }
+
+    StudentNode *prev = *phead;         /* 从头结点出发，prev 指向"被删节点的前一个" */
+
+    /* 一直往前走，直到"下一个节点的姓名匹配"或"走到链表末尾" */
+    while (prev->next != NULL && strcmp(prev->next->name, name) != 0) {
+        prev = prev->next;
+    }
+
+    if (prev->next == NULL) {
+        return 0;                       /* 走到底也没找到 */
+    }
+
+    StudentNode *victim = prev->next;
+    prev->next = victim->next;          /* 跨过被删节点 */
+    free(victim);                       /* 再释放它 */
+
+    return 1;
+}

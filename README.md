@@ -42,6 +42,7 @@
 | 09-23 | 手写快排（Lomuto 分区 + 与 qsort 对拍） | quick_sort.c |
 | 09-29 | 状态机三种实现（switch / 表驱动 / 函数指针）互相对拍 + 非法事件处理 | state_machine.c |
 | 10-06 | **学生成绩管理系统 v0.5**（链表 + 文件存储 + 排序 + 按姓名查找 + 统计函数） | student_mgr/student.c |
+| 10-08 | **学生成绩管理系统 v0.6**（成绩区间筛选 `list_filter_by_score` + 按姓名删除 `list_delete_by_name`） | student_mgr/student.c |
 
 
 ## LeetCode 练习（C 语言）
