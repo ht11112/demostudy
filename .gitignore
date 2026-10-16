@@ -5,6 +5,12 @@
 *.out
 output/
 
+# GCC 编译中间产物（gcc -E / -S 的产物，演示用，不提交）
+# 注意：不要写通配 *.s —— 仓库里已跟踪 vt_o2.s（volatile 实验的反汇编铁证），
+# 通配规则会让它被误判为"该忽略"，所以这里只忽略演示目录下的产物。
+gcc_stages_demo/*.i
+gcc_stages_demo/*.s
+
 # 程序运行时生成的数据文件（不提交）
 student_mgr/students.txt
 

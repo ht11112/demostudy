@@ -43,6 +43,11 @@
 | 09-29 | 状态机三种实现（switch / 表驱动 / 函数指针）互相对拍 + 非法事件处理 | state_machine.c |
 | 10-06 | **学生成绩管理系统 v0.5**（链表 + 文件存储 + 排序 + 按姓名查找 + 统计函数） | student_mgr/student.c |
 | 10-08 | **学生成绩管理系统 v0.6**（成绩区间筛选 `list_filter_by_score` + 按姓名删除 `list_delete_by_name`） | student_mgr/student.c |
+| 10-10 | 循环队列（牺牲一格法判满 + 绕回顺序守恒） | circular_queue.c |
+| 10-10 | 力扣 141 环形链表（快慢指针）+ 力扣 21 合并有序链表（哨兵结点） | leetcode_141_cycle.c, leetcode_21_merge.c |
+| 10-10 | 数字电路第 2 讲：组合逻辑（半加器/全加器真值表 + 2 位级联加法器） | comb_logic.c |
+| 10-16 | 数字电路第 3 讲：时序逻辑（D 锁存器 / D 触发器 / 4 位移位寄存器） | dff_latch.c |
+| 10-16 | GCC 编译四阶段实操（-E/-S/-c/链接）+ Makefile 增量构建入门 | gcc_stages_demo/main.c, student_mgr/Makefile |
 
 
 ## LeetCode 练习（C 语言）
