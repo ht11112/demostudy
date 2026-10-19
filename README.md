@@ -48,6 +48,7 @@
 | 10-10 | 数字电路第 2 讲：组合逻辑（半加器/全加器真值表 + 2 位级联加法器） | comb_logic.c |
 | 10-16 | 数字电路第 3 讲：时序逻辑（D 锁存器 / D 触发器 / 4 位移位寄存器） | dff_latch.c |
 | 10-16 | GCC 编译四阶段实操（-E/-S/-c/链接）+ Makefile 增量构建入门 | gcc_stages_demo/main.c, student_mgr/Makefile |
+| 10-19 | 数字电路第 4 讲：寄存器（并行加载）/ 计数器（EN + 终端计数 + 当分频器） | reg_counter.c |
 
 
 ## LeetCode 练习（C 语言）
