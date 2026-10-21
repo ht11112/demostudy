@@ -50,6 +50,7 @@
 | 10-16 | GCC 编译四阶段实操（-E/-S/-c/链接）+ Makefile 增量构建入门 | gcc_stages_demo/main.c, student_mgr/Makefile |
 | 10-19 | 数字电路第 4 讲：寄存器（并行加载）/ 计数器（EN + 终端计数 + 当分频器） | reg_counter.c |
 | 10-20 | 计算机组成原理第 2 讲：存储器层次（金字塔对照表 + 空间/时间局部性实测 + Cache 与 DMA 一致性） | cache_demo.c |
+| 10-21 | 数字电路第 4 讲应用：16 位寄存器模型模拟 GPIO ODR / BSRR（并行加载 + 原子置位复位 + 读改写竞态） | gpio_odr_model.c |
 
 
 ## LeetCode 练习（C 语言）
